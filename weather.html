@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+  <style>
+  #mapid {
+      height: 700px;
+      width: 1000px;
+      margin: auto;
+  }
+  .centerText {
+      text-align: center;
+  }
+  #container {
+    text-align: center;
+  }
+  #header {
+      top: 50%;
+  }
+
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Map</a></li>
+        <li><a href="weather.html">Weather</a></li>
+        <li><a href="localTime.html">Local Time</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1 class="centerText"> Weather at ISS Location </h1>
+
+  <p class="centerText">Latitude: <span id="lat"></span> <br>
+    Longitude: <span id="lon"></span>
+  </p>
+  <div id="container">
+  <button class="centerBtn" onClick="window.location.reload();">Where is the ISS</button>
+</div>
+
+<script>
+  const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
+  async function getISS() {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    lat = data.latitude;
+    lon = data.longitude;
+
+    const weatherURL = 'api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'appid=fd18decbfa9a5ac96a46754cf3829efb';
+    fetch(weatherURL)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => alert("ERROR"))
+  }
+    getISS();
+</script>
+
+</body>
