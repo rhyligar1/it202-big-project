@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+
+<head>
+  <meta charset="utf-8">
+  <title>Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+  <style>
+  #mapid {
+      height: 700px;
+      width: 1000px;
+      margin: auto;
+  }
+  .centerText {
+      text-align: center;
+  }
+  #container {
+    text-align: center;
+  }
+  #header {
+      top: 50%;
+  }
+
+  </style>
+
+</head>
+
+<body>
+  <h1 class="centerText"> Where is The ISS Now? </h1>
+
+  <p class="centerText">Latitude: <span id="lat"></span> <br>
+    Longitude: <span id="lon"></span>
+  </p>
+  <div id="container">
+  <button class="centerBtn" onClick="window.location.reload();">Where is the ISS</button>
+</div>
+  <div id="mapid"></div>
+
+  <script src="java.js"></script>
+
+</body>
